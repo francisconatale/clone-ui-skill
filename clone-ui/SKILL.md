@@ -289,6 +289,195 @@ from Phase 1 output.
 
 ---
 
+## Phase 5 — Component-Level Refinement (Pixel Perfect Mode)
+
+**Trigger**: User explicitly requests "perfección", "pixel perfect", or
+"quiero que quede igual". Never runs automatically.
+
+**Input**: Phase 1 JSON + Phase 2 JSON + `output_final.html` + original image.
+
+---
+
+### Step 5.1 — Viewport Inference (Cropped Layouts)
+
+Before any other step, detect if the source image shows a **cropped or
+partial UI** — content visibly cut off at any edge.
+
+**Detection signals from Phase 1:**
+- Element `geometry.x + geometry.width` reaches within 8px of `dimensions.width_px`
+  AND element has no visible border/shadow on that edge
+- Same logic for Y axis
+- Element background continues to the crop edge without visual termination
+
+**If partial content detected:**
+- Infer the missing geometry by mirroring or extending the visible pattern
+- Mark inferred elements with `"inferred": true` in the working JSON
+- Never fabricate content — extend structural geometry only (background,
+  container shape, spacing pattern)
+- Add CSS: `overflow: hidden` on the parent + `width` slightly larger than
+  viewport to simulate the crop
+
+---
+
+### Step 5.2 — Layered Element Decomposition
+
+Break the layout into **z-index layers** from Phase 1 data:
+Layer 0 — Page background
+Layer 1 — Base containers (cards, navbars)
+Layer 2 — Content inside containers (text, icons)
+Layer 3 — Floating/overlapping elements (badges, floating buttons, widgets)
+Layer 4 — Overlays (modals, tooltips)
+
+For each **Layer 3+ element** (floating/overlapping):
+- Compute exact `position: absolute` coordinates relative to nearest
+  positioned ancestor
+- Reproduce its own `box-shadow` independently from the parent shadow
+- Apply `border-radius` independently — do not inherit from parent
+
+---
+
+### Step 5.3 — Surface & Texture Reproduction
+
+For each element where `visuals.background_color` alone doesn't explain
+the visual result:
+
+**Gradient detection:**
+- If the element shows color variation across its surface → extract as
+  `linear-gradient` or `radial-gradient` with sampled stops at 0%, 25%,
+  50%, 75%, 100%
+- Sample hex at each stop position
+- If texture/grain is visible over the gradient → add as SVG noise filter
+  or CSS `background-blend-mode` layer
+
+**Subtle pattern detection (dots, grid, lines):**
+- If a repeating micro-pattern is visible → reproduce as `background-image`
+  with SVG `<pattern>` or CSS gradient repeat:
+
+```css
+/* Dot grid example */
+background-image: radial-gradient(circle, #hex 1px, transparent 1px);
+background-size: 12px 12px;
+
+/* Line grid example */
+background-image:
+  linear-gradient(#hex 1px, transparent 1px),
+  linear-gradient(90deg, #hex 1px, transparent 1px);
+background-size: 12px 12px;
+```
+
+**Multi-stop inner shadows:**
+- If element shows depth via inner shadow → use stacked `box-shadow` inset:
+
+```css
+box-shadow:
+  inset 0 1px 0 rgba(255,255,255,0.08),   /* top highlight */
+  inset 0 -1px 0 rgba(0,0,0,0.15),         /* bottom depth */
+  0 8px 24px rgba(0,0,0,0.3);              /* outer shadow */
+```
+
+---
+
+### Step 5.4 — Icon Reproduction
+
+For each `icon-placeholder` in Phase 1:
+
+**Priority order:**
+1. **Identify by shape geometry** — describe the icon shape from pixels
+   (e.g. "wifi symbol: 3 concentric arcs", "contactless: 4 vertical bars
+   tapering left")
+2. **Match to Lucide/Heroicons** — find the closest SVG from these sets by
+   shape description. Never use emoji.
+3. **If no match** → construct minimal SVG from `<path>` primitives based
+   on the observed geometry
+4. **Size**: use exact `geometry.width` × `geometry.height` from Phase 1
+5. **Color**: use exact `visuals.background_color` or inferred stroke color
+
+**NFC/contactless specific pattern:**
+```html
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <path d="M6 12h.01M10 8a5.4 5.4 0 0 1 0 8M14 5a9.8 9.8 0 0 1 0 14"/>
+</svg>
+```
+
+---
+
+### Step 5.5 — Clip & Overflow Handling
+
+For each element that has `border_radius_px > 0` AND contains child
+elements that extend beyond its bounds:
+
+```css
+.parent {
+  border-radius: Xpx;
+  overflow: hidden;        /* clips children to rounded corners */
+  isolation: isolate;      /* prevents z-index bleed */
+}
+```
+
+For floating children that must **escape** the parent clip (e.g. a badge
+overlapping two cards):
+
+```css
+.parent {
+  overflow: visible;        /* do NOT clip */
+}
+.parent::before {           /* pseudo-element for the clipped background */
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  z-index: 0;
+  overflow: hidden;
+}
+```
+
+---
+
+### Step 5.6 — Atomic Validation
+
+For each component refined in Steps 5.2–5.5:
+
+1. Extract a cropped region of the **original image** matching that
+   component's bounding box
+2. Render just that component's HTML/CSS in isolation via `render.cjs`
+3. Compare crop vs render
+4. Score per component: `component_fidelity_score` 0–100
+5. Iterate on components with score < 90 before final assembly
+
+```bash
+# Render isolated component
+node scripts/render.cjs component_card.html component_card_render.png \
+  [component.geometry.width] [component.geometry.height]
+```
+
+### Step 5.7 — Final Assembly
+
+Assemble all refined components back into the full layout.
+Re-run Phase 4 validation.
+Target: `combined_score >= 98` for pixel-perfect mode.
+
+### Output additions
+
+```json
+{
+  "phase5_report": {
+    "partial_layout_detected": true,
+    "inferred_elements": ["el_07_extended"],
+    "floating_elements": ["el_05_nfc_widget"],
+    "surfaces_with_texture": ["el_02_card"],
+    "icons_reproduced": ["el_04_nfc_icon", "el_06_bell"],
+    "component_scores": {
+      "card": 97,
+      "nfc_widget": 94,
+      "header": 99
+    }
+  }
+}
+```
+
+---
+
 ## Delivery
 
 Output folder: `clone-output/<source_image_basename>/`
@@ -296,7 +485,7 @@ Output folder: `clone-output/<source_image_basename>/`
 | File | Contents |
 |---|---|
 | `source.png` | Original image |
-| `output_final.html` | Production-ready file |
+| `output_final.html" | Production-ready file |
 | `screenshot_final.png` | Rendered result |
 | `phase1_extraction.json` | Agent 1 raw output |
 | `phase2_diagnosis.json` | Agent 2 semantic + audit output |
