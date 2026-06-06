@@ -179,7 +179,11 @@ Agent 4 receives both the original screenshot and the Puppeteer render as images
 
 ---
 
+---
 
-## 🙌 Author
+## Tested on
 
-Made by [@francisconatale](https://github.com/francisconatale)
+Developed and tested using **Gemini CLI** with `auto` model routing. No heavy models or extended thinking required — the pipeline is designed to run efficiently on standard inference, keeping latency and cost low across all agents.
+
+---
+
