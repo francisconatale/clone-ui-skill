@@ -25,7 +25,7 @@ clone-ui-skill/
 
 ---
 
-## ⚙️ Prerequisites
+## Prerequisites
 
 Node.js and Puppeteer are required to render and compare screenshots.
 
@@ -41,7 +41,7 @@ npm install puppeteer
 
 ---
 
-## 🤖 How the pipeline works
+## How the pipeline works
 
 The pipeline runs 4 specialized agents in sequence:
 
@@ -65,7 +65,7 @@ The pipeline runs 4 specialized agents in sequence:
 │    extraction               │
 │                             │
 │  Geometry, colors, layout   │
-│  ⚠ Text-blind               │
+│    Text-blind               │
 └──────────────┬──────────────┘
                │  JSON layout
                ▼
@@ -74,7 +74,7 @@ The pipeline runs 4 specialized agents in sequence:
 │    + UX audit               │
 │                             │
 │  Components, WCAG, spacing  │
-│  ⚠ Never sees the image     │
+│    Never sees the image     │
 └──────────────┬──────────────┘
                │  JSON + audit report
                ▼
