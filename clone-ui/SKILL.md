@@ -28,7 +28,7 @@ Before running Phase 1, you MUST create a dedicated workspace folder for the clo
 
 ## Phase 3: Code Generation (Agent 3)
 - **Goal**: Create a verbatim structural replica (Pass A) and apply UX fixes (Pass B, if authorized).
-- **Tool**: `invoke_agent` -> `agent3_engineer.md`.
+- **Tool**: `invoke_agent` -> `agent3_builder.md`.
 - **Constraint**: Engineer must NOT see the original image. Output to `phases/output_vN.html`.
 
 ## Phase 4: Structural Validation (Agent 4)
