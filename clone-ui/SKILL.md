@@ -23,7 +23,7 @@ Before running Phase 1, you MUST create a dedicated workspace folder for the clo
 
 ## Phase 2: Diagnosis & Semantic Classification (Agent 2)
 - **Goal**: Identify roles and run UX Audit.
-- **Tool**: `invoke_agent` -> `agent2_critic.md`.
+- **Tool**: `invoke_agent` -> `agent2_semantic.md`.
 - **Constraint**: Input only Phase 1 JSON. Do NOT look at the original image.
 
 ## Phase 3: Code Generation (Agent 3)
