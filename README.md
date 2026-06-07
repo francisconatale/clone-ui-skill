@@ -6,7 +6,7 @@
 
 ## What it does
 
-`clone-ui-skill` takes a screenshot of any UI and automatically converts it into clean, faithful HTML/CSS code using a 4-agent pipeline. Each agent has a specific, isolated role — from geometry extraction to final visual scoring — ensuring high accuracy and maintainability.
+`clone-ui-skill` takes a screenshot of any UI and automatically converts it into clean, faithful HTML/CSS code using a 5-phase multi-agent pipeline. Each agent has a specific, isolated role — from geometry extraction to final visual scoring — ensuring high accuracy and maintainability.
 
 ---
 
@@ -15,8 +15,16 @@
 ```
 clone-ui-skill/
 ├── clone-ui/
-│   ├── SKILL.md              ← Main skill definition (agents 1–4 + delivery spec)
+│   ├── SKILL.md              ← Main skill definition
+│   ├── agents/               ← Instruction files for each phase
+│   │   ├── agent1a_macro.md  ← Phase 1a: Macro layout scan
+│   │   ├── agent1b_micro.md  ← Phase 1c: Micro detail extraction
+│   │   ├── agent2_semantic.md ← Phase 2: Semantic mapping
+│   │   ├── agent3_builder.md  ← Phase 3: HTML/CSS generation
+│   │   ├── agent4_validator.md ← Phase 4: Visual validation
+│   │   └── agent5_ux.md      ← Phase 5: UX polish (optional)
 │   └── scripts/
+│       ├── crop.cjs          ← Component cropper
 │       └── render.cjs        ← Puppeteer screenshot renderer
 ├── uses/                     ← Usage examples
 ├── package.json
@@ -33,24 +41,35 @@ Node.js and Puppeteer are required to render and compare screenshots.
 npm install
 ```
 
-Or install Puppeteer directly:
+---
 
-```bash
-npm install puppeteer
-```
+## Divide & Conquer: Component-Level Analysis
+
+Unlike standard "one-shot" AI coding, `clone-ui-skill` uses a **recursive extraction strategy** to achieve near-perfect fidelity:
+
+1.  **Macro Mapping (Agent 1a)**: First, the entire UI is scanned to identify the geometry of all top-level components.
+2.  **Component Isolation (Crop Script)**: The system automatically generates **individual PNG screenshots (crops)** for every single component identified.
+3.  **Micro Detail (Agent 1b)**: Agent 1b is invoked **for each individual crop**. Because it only looks at one small component at a time, it can "zoom in" to accurately sample:
+    *   Exact background colors and gradients.
+    *   Subtle inner and outer shadows.
+    *   Precise font weights and sizes.
+    *   Border radii and line weights.
+4.  **Merged Vision**: These individual data points are merged into a single layout file, providing Agent 3 with an ultra-high-resolution blueprint.
 
 ---
 
 ## How the pipeline works
 
-The pipeline runs 4 specialized agents in sequence:
+The pipeline runs 5 specialized agents in sequence:
 
 | Agent | Role | Notes |
 |-------|------|-------|
-| **Agent 1** | Raw geometry & color extraction | Text-blind — focuses purely on layout and visual structure |
-| **Agent 2** | Component classification + UX audit | Never sees the image — works from structured JSON. Checks WCAG contrast, spacing, hierarchy |
-| **Agent 3** | HTML/CSS generation | Builds faithful code from Agent 2's JSON. Applies polish only where the audit authorized it |
-| **Agent 4** | Visual scoring & compliance check | Renders via `render.cjs`, then the AI compares both PNGs visually and emits a semantic similarity score + diff description |
+| **Agent 1a** | Macro Layout Scan | Identifies bounding boxes of top-level components. |
+| **Agent 1b** | Micro Detail Extractor | Extracts deep visual details (colors, fonts, shadows) from individual component crops. |
+| **Agent 2** | Semantic Mapper | Maps geometry to component roles (button, card, navbar). Never sees the image. |
+| **Agent 3** | Faithful Builder | Builds a verbatim structural replica in HTML/CSS from extracted data. |
+| **Agent 4** | Visual Validator | Compares render against original, calculates similarity, and identifies discrepancies. |
+| **Agent 5** | UX Architect | (Optional) Elevates the replica to production-grade quality with accessibility and interaction polish. |
 
 ### Pipeline diagram
 
@@ -61,48 +80,61 @@ The pipeline runs 4 specialized agents in sequence:
                │
                ▼
 ┌─────────────────────────────┐
-│    Agent 1 — Visual         │
-│    extraction               │
+│    Agent 1a — Macro Layout  │
 │                             │
-│  Geometry, colors, layout   │
-│    Text-blind               │
+│  Bounding boxes of regions  │
 └──────────────┬──────────────┘
-               │  JSON layout
+               │
                ▼
 ┌─────────────────────────────┐
-│    Agent 2 — Classification │
-│    + UX audit               │
-│                             │
-│  Components, WCAG, spacing  │
-│    Never sees the image     │
+│    Crop Script — component  │
+│    isolation                │
 └──────────────┬──────────────┘
-               │  JSON + audit report
+               │
                ▼
-  ┌────────────────────────────────────────────────────┐
-  │                                                    │
-  ▼                                              retry + diff
-┌─────────────────────────────┐                (score < 95%)
-│    Agent 3 — HTML/CSS       │                       │
-│    generation               │                       │
-│                             │                       │
-│  Faithful code from JSON    │                       │
-│  Applies feedback on retry  │                       │
-└──────────────┬──────────────┘                       │
-               │  output_vN.html                      │
-               ▼                                      │
-┌─────────────────────────────┐         ┌─────────────┐ │
-│    Agent 4 — Render         │◄────────│  render.cjs │ │
-│    + scoring                │         └─────────────┘ │
-│                             │                         │
-│  AI visual comparison       │                         │
-│  → semantic diff report     │                         │
-└──────────────┬──────────────┘                         │
-               │                                        │
-               ▼                                        │
-          ┌─────────┐   score < 95%                     │
-          │  ≥ 95%? ├───────────────────────────────────┘
+┌─────────────────────────────┐
+│    Agent 1b — Micro Detail  │
+│                             │
+│  Colors, Typography, Shadow │
+└──────────────┬──────────────┘
+               │  JSON (merged)
+               ▼
+┌─────────────────────────────┐
+│    Agent 2 — Semantic       │
+│    Mapping                  │
+│                             │
+│  Role inference (no image)  │
+└──────────────┬──────────────┘
+               │  JSON + metadata
+               ▼
+┌─────────────────────────────┐
+│    Agent 3 — Faithful       │
+│    Builder                  │
+│                             │
+│  verbatim HTML/CSS replica  │
+└──────────────┬──────────────┘
+               │  output_vN.html
+               ▼
+┌─────────────────────────────┐         ┌─────────────┐
+│    Agent 4 — Visual         │◄────────│  render.cjs │
+│    Validation               │         └─────────────┘
+│                             │                ▲
+│  Similarity score & diff    │                │
+└──────────────┬──────────────┘                │
+               │                               │
+               ▼                               │
+          ┌─────────┐   score < 95%            │
+          │  ≥ 95%? ├──────────────────────────┘
           └────┬────┘
                │ score ≥ 95%
+               ▼
+┌─────────────────────────────┐
+│    Agent 5 — UX Architect   │
+│    (Optional Polish)        │
+│                             │
+│  Accessibility, Interaction │
+└──────────────┬──────────────┘
+               │
                ▼
 ┌─────────────────────────────┐
 │   clone-output/<session>/   │
@@ -168,6 +200,15 @@ node clone-ui/scripts/render.cjs output_v1.html screenshot_v1.png [width] [heigh
 The pipeline targets **≥ 95% visual fidelity** to the source screenshot. There is no pixel-diff library involved — **the AI model is the comparator**.
 
 Agent 4 receives both the original screenshot and the Puppeteer render as images, and evaluates them visually. The feedback it produces is semantic, not numeric — instead of "8% pixel mismatch in region (0,0,300,50)" it outputs something like *"the navbar padding is too tight and the background color doesn't match"*. That description is what gets passed back to Agent 3 to guide the next iteration.
+
+---
+
+## Pro-Tip: Skill Synergy
+
+While `clone-ui-skill` is engineered for **exact structural and visual replication**, it works best when combined with other specialized skills:
+
+💡 **Combine with `frontend-design`**: 
+Once you have a faithful replica, use the `frontend-design` skill to elevate the aesthetics even further. While `clone-ui` gives you the "bones" and exact look of the original, `frontend-design` can help you refine the code architecture, add modern animations, or adapt the design into a broader design system.
 
 ---
 
