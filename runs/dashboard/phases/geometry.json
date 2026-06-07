@@ -1,0 +1,60 @@
+{
+  "dimensions": { "width_px": 375, "height_px": 812 },
+  "background": "#0a0a0a",
+  "elements": [
+    {
+      "id": "el_01_menu_icon",
+      "type": "icon-placeholder",
+      "cropped": false,
+      "z_layer": 1,
+      "geometry": { "x": 30, "y": 45, "width": 40, "height": 40, "border_radius_px": 20 },
+      "visuals": { "background_color": "#1a1a1a", "border": null, "shadow": null, "opacity": 1.0, "gradient": null, "texture": "none" }
+    },
+    {
+      "id": "el_02_profile_pic",
+      "type": "circle",
+      "cropped": false,
+      "z_layer": 1,
+      "geometry": { "x": 300, "y": 40, "width": 50, "height": 50, "border_radius_px": 25 },
+      "visuals": { "background_color": "#333333", "border": null, "shadow": null, "opacity": 1.0, "gradient": null, "texture": "none" }
+    },
+    {
+      "id": "el_03_title_block",
+      "type": "text-block",
+      "cropped": false,
+      "z_layer": 1,
+      "geometry": { "x": 30, "y": 120, "width": 200, "height": 100, "border_radius_px": 0 },
+      "visuals": { "background_color": "transparent", "border": null, "shadow": null, "opacity": 1.0, "gradient": null, "texture": "none" },
+      "text_block": { "estimated_size_px": 32, "weight": "bold", "color": "#ffffff", "family_guess": "sans-serif" }
+    },
+    {
+      "id": "el_04_search_button",
+      "type": "circle",
+      "cropped": false,
+      "z_layer": 1,
+      "geometry": { "x": 300, "y": 120, "width": 50, "height": 50, "border_radius_px": 25 },
+      "visuals": { "background_color": "#1a1a1a", "border": null, "shadow": null, "opacity": 1.0, "gradient": null, "texture": "none" }
+    },
+    {
+      "id": "el_05_balance_card",
+      "type": "rounded-rect",
+      "cropped": false,
+      "z_layer": 1,
+      "geometry": { "x": 20, "y": 200, "width": 335, "height": 150, "border_radius_px": 30 },
+      "visuals": { "background_color": "#1a1a1a", "border": null, "shadow": "0 10px 20px rgba(0,0,0,0.5)", "opacity": 1.0, "gradient": null, "texture": "none" }
+    },
+    {
+      "id": "el_06_report_card",
+      "type": "rounded-rect",
+      "cropped": false,
+      "z_layer": 1,
+      "geometry": { "x": 20, "y": 550, "width": 335, "height": 220, "border_radius_px": 30 },
+      "visuals": { "background_color": "#1a1a1a", "border": null, "shadow": null, "opacity": 1.0, "gradient": null, "texture": "none" }
+    }
+  ],
+  "layout_logic": "flex-col",
+  "spacing_samples": {
+    "gap_px": 20,
+    "padding_px": 20
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "el_05",
+  "absolute_position": { "x": 10, "y": 165, "width": 212, "height": 45 },
+  "crop_file": "el_05.png",
+  "type": "horizontal_scroller",
+  "z_layer": 1,
+  "cropped": false,
+  "visuals": null,
+  "text_blocks": [],
+  "children": [
+    { "id": "el_05_item_01", "label": "Sun", "value": "12", "state": "unselected" },
+    { "id": "el_05_item_02", "label": "Mon", "value": "13", "state": "unselected" },
+    { "id": "el_05_item_03", "label": "Tue", "value": "14", "state": "unselected" },
+    { "id": "el_05_item_04", "label": "Wed", "value": "15", "state": "selected", "indicator": "dot_above" },
+    { "id": "el_05_item_05", "label": "Thu", "value": "16", "state": "unselected" },
+    { "id": "el_05_item_06", "label": "Fri", "value": "17", "state": "unselected" },
+    { "id": "el_05_item_07", "label": "Sat", "value": "18", "state": "unselected" }
+  ],
+  "layout_logic": "horizontal_flex",
+  "spacing_samples": {
+    "item_gap": 8,
+    "selected_item_padding": { "top": 5, "bottom": 5, "left": 10, "right": 10 },
+    "selected_background": "#000000",
+    "unselected_text_color_label": "#BDC3C7",
+    "unselected_text_color_value": "#2C3E50"
+  }
+}

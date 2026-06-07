@@ -1,0 +1,23 @@
+{
+  "id": "el_05_c01",
+  "absolute_position": { "x": 98, "y": 165, "width": 28, "height": 45 },
+  "crop_file": "el_05_c01.png",
+  "type": "capsule",
+  "z_layer": 2,
+  "cropped": false,
+  "visuals": {
+    "background_color": "#1A1A1A",
+    "border_radius": 14,
+    "border": null,
+    "shadow": null
+  },
+  "text_blocks": [
+    { "type": "day", "color": "#FFFFFF", "font_size": 10 },
+    { "type": "date", "color": "#FFFFFF", "font_size": 12, "font_weight": "bold" }
+  ],
+  "children": [
+    { "type": "indicator_dot", "color": "#FFFFFF" }
+  ],
+  "layout_logic": "vertical_stack_center",
+  "spacing_samples": null
+}

@@ -1,0 +1,16 @@
+{
+  "id": "el_10_c01",
+  "absolute_position": { "x": 18, "y": 434, "width": 10, "height": 10 },
+  "crop_file": "el_10_c01.png",
+  "type": "icon",
+  "z_layer": 2,
+  "cropped": false,
+  "visuals": {
+    "icon_type": "sparkle",
+    "icon_color": "#000000"
+  },
+  "text_blocks": [],
+  "children": [],
+  "layout_logic": null,
+  "spacing_samples": null
+}

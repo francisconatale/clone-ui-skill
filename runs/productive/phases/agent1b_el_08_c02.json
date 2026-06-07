@@ -1,0 +1,16 @@
+{
+  "id": "el_08_c02",
+  "absolute_position": { "x": 131, "y": 295, "width": 81, "height": 30 },
+  "crop_file": "el_08_c02.png",
+  "type": "text_block",
+  "z_layer": 2,
+  "cropped": false,
+  "visuals": null,
+  "text_blocks": [
+    { "type": "title", "font_size": 14, "font_weight": "bold", "color": "#1A1A1A" },
+    { "type": "subtitle", "font_size": 10, "color": "#4D4D4D" }
+  ],
+  "children": [],
+  "layout_logic": "vertical_stack",
+  "spacing_samples": null
+}

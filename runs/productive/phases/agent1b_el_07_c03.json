@@ -1,0 +1,19 @@
+{
+  "id": "el_07_c03",
+  "absolute_position": { "x": 20, "y": 355, "width": 25, "height": 25 },
+  "crop_file": "el_07_c03.png",
+  "type": "avatar",
+  "z_layer": 2,
+  "cropped": false,
+  "visuals": {
+    "border_radius": "50%",
+    "border": "1px solid #FFFFFF"
+  },
+  "text_blocks": [
+    { "type": "name", "font_size": 10, "font_weight": "500" },
+    { "type": "role", "font_size": 8, "color": "#666666" }
+  ],
+  "children": [],
+  "layout_logic": "horizontal_side_by_side",
+  "spacing_samples": { "gap": 5 }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "el_08",
+  "absolute_position": { "x": 121, "y": 250, "width": 101, "height": 140 },
+  "crop_file": "el_08.png",
+  "type": "card",
+  "z_layer": 1,
+  "cropped": false,
+  "visuals": {
+    "background_color": "#E9967A",
+    "border_radius": 20,
+    "border": null,
+    "shadow": null
+  },
+  "text_blocks": [],
+  "children": [
+    { "id": "el_08_c01", "type": "badge" },
+    { "id": "el_08_c02", "type": "text_block" },
+    { "id": "el_08_c03", "type": "avatar" }
+  ],
+  "layout_logic": "vertical_stack",
+  "spacing_samples": { "padding": 10 }
+}

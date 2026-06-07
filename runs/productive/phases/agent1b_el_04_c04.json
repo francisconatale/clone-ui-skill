@@ -1,0 +1,46 @@
+{
+  "id": "el_04_c04",
+  "absolute_position": { "x": 145, "y": 55, "width": 70, "height": 95 },
+  "crop_file": "el_04_c04.png",
+  "type": "glassmorphic_illustration",
+  "z_layer": 2,
+  "cropped": false,
+  "visuals": {
+    "style": "glassmorphism",
+    "elements": [
+      {
+        "type": "stem",
+        "geometry": "curved_path",
+        "color": "#00d1a0",
+        "stroke_width": 4,
+        "effects": ["inner_shadow"]
+      },
+      {
+        "type": "petals",
+        "count": 5,
+        "geometry": "rounded_blobs",
+        "fill": {
+          "type": "radial_gradient",
+          "colors": ["rgba(255, 182, 193, 0.4)", "rgba(255, 20, 147, 0.8)"],
+          "stops": [0, 1]
+        },
+        "effects": {
+          "backdrop-filter": "blur(4px)",
+          "border": "1px solid rgba(255, 255, 255, 0.3)",
+          "highlights": "specular_top_edges"
+        }
+      },
+      {
+        "type": "core",
+        "geometry": "circle",
+        "color": "#FFD700",
+        "effects": ["glass_reflection"]
+      }
+    ],
+    "layer_stacking": "stem_below_petals_below_core"
+  },
+  "text_blocks": [],
+  "children": [],
+  "layout_logic": null,
+  "spacing_samples": null
+}

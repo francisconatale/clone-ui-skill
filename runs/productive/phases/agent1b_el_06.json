@@ -1,0 +1,15 @@
+{
+  "id": "el_06",
+  "absolute_position": { "x": 10, "y": 220, "width": 120, "height": 22 },
+  "crop_file": "el_06.png",
+  "type": "text_block",
+  "z_layer": 1,
+  "cropped": false,
+  "visuals": null,
+  "text_blocks": [
+    { "type": "heading", "font_size": 18, "font_weight": "bold", "color": "#000000" }
+  ],
+  "children": [],
+  "layout_logic": null,
+  "spacing_samples": null
+}

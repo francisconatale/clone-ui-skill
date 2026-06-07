@@ -1,0 +1,20 @@
+{
+  "id": "el_07_c01",
+  "absolute_position": { "x": 20, "y": 260, "width": 40, "height": 15 },
+  "crop_file": "el_07_c01.png",
+  "type": "badge",
+  "z_layer": 2,
+  "cropped": false,
+  "visuals": {
+    "background_color": "#FFFFFF",
+    "border_radius": 10,
+    "border": null,
+    "shadow": null
+  },
+  "text_blocks": [
+    { "type": "label", "font_size": 8, "font_weight": "600", "color": "#1A3C34" }
+  ],
+  "children": [],
+  "layout_logic": "center",
+  "spacing_samples": null
+}

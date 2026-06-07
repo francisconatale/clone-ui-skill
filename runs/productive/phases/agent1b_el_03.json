@@ -1,0 +1,20 @@
+{
+  "id": "el_03",
+  "absolute_position": { "x": 196, "y": 10, "width": 26, "height": 26 },
+  "crop_file": "el_03.png",
+  "type": "icon_button",
+  "z_layer": 2,
+  "cropped": false,
+  "visuals": {
+    "background_color": "#FFFFFF",
+    "border_radius": "50%",
+    "border": "1px solid #E0E0E0",
+    "shadow": null,
+    "icon_type": "magnifying_glass",
+    "icon_color": "#000000"
+  },
+  "text_blocks": [],
+  "children": [],
+  "layout_logic": "center",
+  "spacing_samples": null
+}

@@ -1,0 +1,21 @@
+{
+  "id": "el_02",
+  "absolute_position": { "x": 75, "y": 10, "width": 82, "height": 24 },
+  "crop_file": "el_02.png",
+  "type": "text_group",
+  "z_layer": 1,
+  "cropped": false,
+  "visuals": {
+    "background_color": null,
+    "border_radius": 0,
+    "border": null,
+    "shadow": null
+  },
+  "text_blocks": [
+    { "type": "heading", "font_size": 16, "font_weight": "bold", "color": "#000000" },
+    { "type": "subtext", "font_size": 12, "font_weight": "normal", "color": "#808080" }
+  ],
+  "children": [],
+  "layout_logic": "vertical_stack",
+  "spacing_samples": { "gap": 2 }
+}

@@ -1,0 +1,54 @@
+<!-- clone-ui faithful replica | agent1 values verbatim | no polish applied | iteration 2 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=375, height=812, initial-scale=1.0">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #1a1a1a;
+            --surface-alt: #333333;
+            --text: #ffffff;
+        }
+        body {
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+            width: 375px;
+            height: 812px;
+            font-family: 'DM Sans', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        .el {
+            position: absolute;
+        }
+        .icon { background-color: var(--surface); display: flex; align-items: center; justify-content: center; }
+        .card { background-color: var(--surface); }
+        .circle { background-color: var(--surface-alt); border-radius: 50%; }
+        .text { color: var(--text); }
+    </style>
+</head>
+<body>
+    <!-- el_01_menu_icon -->
+    <div class="el icon" style="left: 30px; top: 45px; width: 40px; height: 40px; border-radius: 20px;"></div>
+    
+    <!-- el_02_profile_pic -->
+    <div class="el circle" style="left: 300px; top: 40px; width: 50px; height: 50px; background-color: #333333;"></div>
+    
+    <!-- el_03_title_block -->
+    <div class="el text" style="left: 30px; top: 120px; width: 200px; height: 100px; font-size: 32px; font-weight: bold;">
+        Bienvenida<br>Sara!
+    </div>
+    
+    <!-- el_04_search_button -->
+    <div class="el icon" style="left: 300px; top: 120px; width: 50px; height: 50px; border-radius: 25px;"></div>
+    
+    <!-- el_05_balance_card -->
+    <div class="el card" style="left: 20px; top: 200px; width: 335px; height: 150px; border-radius: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);"></div>
+    
+    <!-- el_06_report_card -->
+    <div class="el card" style="left: 20px; top: 550px; width: 335px; height: 220px; border-radius: 30px;"></div>
+</body>
+</html>

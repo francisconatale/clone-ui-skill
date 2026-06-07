@@ -1,0 +1,22 @@
+{
+  "id": "el_10",
+  "absolute_position": { "x": 10, "y": 432, "width": 212, "height": 12 },
+  "crop_file": "el_10.png",
+  "type": "container",
+  "z_layer": 1,
+  "cropped": true,
+  "visuals": {
+    "background_color": "#FADBD8",
+    "border_radius": 15,
+    "border": null,
+    "shadow": null
+  },
+  "text_blocks": [
+    { "type": "message", "font_size": 12, "color": "#1A1A1A" }
+  ],
+  "children": [
+    { "id": "el_10_c01", "type": "icon" }
+  ],
+  "layout_logic": "horizontal_flow",
+  "spacing_samples": { "padding": 5 }
+}

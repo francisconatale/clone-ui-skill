@@ -1,0 +1,540 @@
+<!-- clone-ui faithful replica | agent1b values verbatim | no polish applied -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faithful Replica</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background: #FFFFFF;
+            --surface: #FFFFFF;
+            --primary: #1A3C34;
+            --accent: #D1E8E2;
+            --text-primary: #000000;
+            --text-secondary: #808080;
+            --border: #E0E0E0;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding-top: 20px;
+        }
+
+        .screen {
+            position: relative;
+            width: 232px;
+            height: 480px;
+            background-color: var(--background);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* el_01 - Avatar */
+        .el-01 {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 1px solid #FFFFFF;
+            background-color: #D1D5DB;
+            z-index: 2;
+        }
+
+        /* el_02 - Text Group */
+        .el-02 {
+            position: absolute;
+            left: 75px;
+            top: 10px;
+            width: 82px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2px;
+            z-index: 1;
+        }
+        .el-02-heading {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000000;
+            line-height: 1;
+            text-align: center;
+        }
+        .el-02-subtext {
+            font-size: 12px;
+            font-weight: normal;
+            color: #808080;
+            line-height: 1;
+            text-align: center;
+        }
+
+        /* el_03 - Icon Button */
+        .el-03 {
+            position: absolute;
+            left: 196px;
+            top: 10px;
+            width: 26px;
+            height: 26px;
+            background-color: #FFFFFF;
+            border-radius: 50%;
+            border: 1px solid #E0E0E0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        /* el_04 - Card Container */
+        .el-04 {
+            position: absolute;
+            left: 10px;
+            top: 45px;
+            width: 212px;
+            height: 115px;
+            background-color: #D1E8E2;
+            border-radius: 24px;
+            z-index: 1;
+        }
+
+        /* el_04_c01 - Headline */
+        .el-04-c01 {
+            position: absolute;
+            left: 25px;
+            top: 60px;
+            width: 110px;
+            height: 40px;
+            font-size: 24px;
+            font-weight: 800;
+            color: #1A3C34;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+        }
+
+        /* el_04_c02 - Caption */
+        .el-04-c02 {
+            position: absolute;
+            left: 25px;
+            top: 105px;
+            width: 110px;
+            height: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #1A3C34;
+            line-height: 1;
+            z-index: 2;
+        }
+
+        /* el_04_c03 - Avatar Group */
+        .el-04-c03 {
+            position: absolute;
+            left: 25px;
+            top: 125px;
+            width: 65px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+        }
+        .overlap-avatars {
+            display: flex;
+            align-items: center;
+        }
+        .overlap-avatars .avatar {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 1.5px solid #D1E8E2;
+            background-color: #9CA3AF;
+            margin-right: -8px;
+        }
+        .overlap-avatars .counter {
+            font-size: 10px;
+            font-weight: 600;
+            color: #1A3C34;
+            margin-left: 12px;
+        }
+
+        /* el_04_c04 - Illustration */
+        .el-04-c04 {
+            position: absolute;
+            left: 145px;
+            top: 55px;
+            width: 70px;
+            height: 95px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            color: #FFB6C1;
+        }
+
+        /* el_05 - Horizontal Scroller */
+        .el-05 {
+            position: absolute;
+            left: 10px;
+            top: 165px;
+            width: 212px;
+            height: 45px;
+            z-index: 1;
+        }
+
+        /* el_05_c01 - Capsule */
+        .el-05-c01 {
+            position: absolute;
+            left: 88px; /* 98 - 10 offset */
+            top: 0;
+            width: 28px;
+            height: 45px;
+            background-color: #1A1A1A;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            color: #FFFFFF;
+        }
+        .el-05-c01 .day {
+            font-size: 10px;
+            line-height: 1;
+        }
+        .el-05-c01 .date {
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+        .el-05-c01 .dot {
+            width: 3px;
+            height: 3px;
+            background-color: #FFFFFF;
+            border-radius: 50%;
+            margin-top: 2px;
+        }
+
+        /* el_06 - Heading */
+        .el-06 {
+            position: absolute;
+            left: 10px;
+            top: 220px;
+            width: 120px;
+            height: 22px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000000;
+            z-index: 1;
+        }
+
+        /* el_07 - Beige Card */
+        .el-07 {
+            position: absolute;
+            left: 10px;
+            top: 250px;
+            width: 101px;
+            height: 140px;
+            background-color: #D8D0C0;
+            border-radius: 20px;
+            z-index: 1;
+            padding: 10px;
+        }
+        .el-07-badge {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 40px;
+            height: 15px;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            font-weight: 600;
+            color: #1A3C34;
+            z-index: 2;
+        }
+        .el-07-text {
+            position: absolute;
+            left: 10px;
+            top: 45px;
+            width: 81px;
+            height: 30px;
+            display: flex;
+            flex-direction: column;
+            z-index: 2;
+        }
+        .el-07-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #1A1A1A;
+            line-height: 1.1;
+        }
+        .el-07-subtitle {
+            font-size: 10px;
+            color: #4D4D4D;
+            line-height: 1.2;
+        }
+        .el-07-footer {
+            position: absolute;
+            left: 10px;
+            top: 105px;
+            width: 81px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 2;
+        }
+        .el-07-avatar {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid #FFFFFF;
+            background-color: #9CA3AF;
+        }
+        .el-07-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .el-07-name {
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 1;
+        }
+        .el-07-role {
+            font-size: 8px;
+            color: #666666;
+            line-height: 1;
+        }
+
+        /* el_08 - Salmon Card */
+        .el-08 {
+            position: absolute;
+            left: 121px;
+            top: 250px;
+            width: 101px;
+            height: 140px;
+            background-color: #E9967A;
+            border-radius: 20px;
+            z-index: 1;
+            padding: 10px;
+        }
+        .el-08-badge {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 30px;
+            height: 15px;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            font-weight: 600;
+            color: #E9967A;
+            z-index: 2;
+        }
+        .el-08-text {
+            position: absolute;
+            left: 10px;
+            top: 45px;
+            width: 81px;
+            height: 30px;
+            display: flex;
+            flex-direction: column;
+            z-index: 2;
+        }
+        .el-08-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #1A1A1A;
+            line-height: 1.1;
+        }
+        .el-08-subtitle {
+            font-size: 10px;
+            color: #4D4D4D;
+            line-height: 1.2;
+        }
+        .el-08-footer {
+            position: absolute;
+            left: 10px;
+            top: 105px;
+            width: 81px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 2;
+        }
+        .el-08-avatar {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid #FFFFFF;
+            background-color: #9CA3AF;
+        }
+        .el-08-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .el-08-name {
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 1;
+        }
+        .el-08-role {
+            font-size: 8px;
+            color: #666666;
+            line-height: 1;
+        }
+
+        /* el_09 - Heading */
+        .el-09 {
+            position: absolute;
+            left: 10px;
+            top: 405px;
+            width: 120px;
+            height: 22px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000000;
+            z-index: 1;
+        }
+
+        /* el_10 - Footer Bar */
+        .el-10 {
+            position: absolute;
+            left: 10px;
+            top: 432px;
+            width: 212px;
+            height: 24px; /* Adjusted from 12 to fit content better while keeping base y */
+            background-color: #FADBD8;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            gap: 6px;
+            z-index: 1;
+        }
+        .el-10-icon {
+            width: 10px;
+            height: 10px;
+            color: #000000;
+        }
+        .el-10-message {
+            font-size: 12px;
+            color: #1A1A1A;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="screen">
+        <!-- el_01 -->
+        <div class="el-01"></div>
+
+        <!-- el_02 -->
+        <div class="el-02">
+            <div class="el-02-heading">Heading</div>
+            <div class="el-02-subtext">Subtext</div>
+        </div>
+
+        <!-- el_03 -->
+        <div class="el-03">
+            <i data-lucide="search" style="width: 14px; height: 14px;"></i>
+        </div>
+
+        <!-- el_04 -->
+        <div class="el-04"></div>
+        <div class="el-04-c01">Headline Text</div>
+        <div class="el-04-c02">Caption subline</div>
+        <div class="el-04-c03">
+            <div class="overlap-avatars">
+                <div class="avatar"></div>
+                <div class="avatar"></div>
+                <div class="avatar"></div>
+                <div class="counter">+3</div>
+            </div>
+        </div>
+        <div class="el-04-c04">
+            <i data-lucide="flower-2" style="width: 50px; height: 50px;"></i>
+        </div>
+
+        <!-- el_05 -->
+        <div class="el-05">
+            <div class="el-05-c01">
+                <div class="day">Mon</div>
+                <div class="date">12</div>
+                <div class="dot"></div>
+            </div>
+        </div>
+
+        <!-- el_06 -->
+        <div class="el-06">Upcoming</div>
+
+        <!-- el_07 -->
+        <div class="el-07">
+            <div class="el-07-badge">LABEL</div>
+            <div class="el-07-text">
+                <div class="el-07-title">Title Text</div>
+                <div class="el-07-subtitle">Subtitle info</div>
+            </div>
+            <div class="el-07-footer">
+                <div class="el-07-avatar"></div>
+                <div class="el-07-info">
+                    <div class="el-07-name">Name</div>
+                    <div class="el-07-role">Role</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- el_08 -->
+        <div class="el-08">
+            <div class="el-08-badge">NEW</div>
+            <div class="el-08-text">
+                <div class="el-08-title">Title Text</div>
+                <div class="el-08-subtitle">Subtitle info</div>
+            </div>
+            <div class="el-08-footer">
+                <div class="el-08-avatar"></div>
+                <div class="el-08-info">
+                    <div class="el-08-name">Name</div>
+                    <div class="el-08-role">Role</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- el_09 -->
+        <div class="el-09">Other Items</div>
+
+        <!-- el_10 -->
+        <div class="el-10">
+            <i data-lucide="sparkle" class="el-10-icon"></i>
+            <div class="el-10-message">Message text here...</div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

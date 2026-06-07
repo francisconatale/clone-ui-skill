@@ -1,0 +1,19 @@
+{
+  "id": "el_04_c03",
+  "absolute_position": { "x": 25, "y": 125, "width": 65, "height": 22 },
+  "crop_file": "el_04_c03.png",
+  "type": "avatar_group",
+  "z_layer": 2,
+  "cropped": false,
+  "visuals": null,
+  "text_blocks": [
+    { "type": "counter", "font_size": 10, "font_weight": "600", "color": "#1A3C34" }
+  ],
+  "children": [
+    { "type": "avatar", "overlap": -8 },
+    { "type": "avatar", "overlap": -8 },
+    { "type": "avatar", "overlap": -8 }
+  ],
+  "layout_logic": "horizontal_overlap",
+  "spacing_samples": { "overlap": -8 }
+}

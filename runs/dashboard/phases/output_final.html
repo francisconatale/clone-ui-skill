@@ -1,0 +1,79 @@
+<!-- clone-ui faithful replica | agent1 values verbatim | no polish applied | iteration 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=375, height=812, initial-scale=1.0">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #1a1a1a;
+            --surface-alt: #333333;
+            --text: #ffffff;
+            --color-primary: #007AFF; /* UX: color-primary */
+        }
+        body {
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+            width: 375px;
+            height: 812px;
+            font-family: 'DM Sans', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        .el {
+            position: absolute;
+        }
+        .icon { background-color: var(--surface); display: flex; align-items: center; justify-content: center; }
+        .card { background-color: var(--surface); }
+        .circle { background-color: var(--surface-alt); border-radius: 50%; }
+        .text { color: var(--text); }
+
+        /* Interactive elements */
+        .el.icon, .el.card { cursor: pointer; } /* UX: cursor-pointer */
+        .el.icon, .el.card { min-width: 44px; min-height: 44px; } /* UX: touch-target */
+        .el.icon:hover, .el.card:hover { opacity: 0.85; } /* UX: hover-state */
+        .el.icon:active, .el.card:active { transform: scale(0.97); } /* UX: press-feedback */
+        :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; } /* UX: focus-visible */
+
+        @media (prefers-reduced-motion: no-preference) {
+          .el { transition: opacity 150ms ease-out, transform 150ms ease-out; } /* UX: animation-timing */
+          .el:not(:hover) { transition-duration: 100ms; } /* UX: animation-timing */
+        }
+    </style>
+</head>
+<body>
+    <!-- el_01_menu_icon -->
+    <div class="el icon" style="left: 30px; top: 45px; width: 40px; height: 40px; border-radius: 20px;"></div>
+    
+    <!-- el_02_profile_pic -->
+    <div class="el circle" style="left: 300px; top: 40px; width: 50px; height: 50px; background-color: #333333;"></div>
+    
+    <!-- el_03_title_block -->
+    <div class="el text" style="left: 30px; top: 120px; width: 200px; height: 100px; font-size: 32px; font-weight: 800;">
+        Bienvenida<br>Sara!
+    </div>
+    
+    <!-- el_04_search_button -->
+    <div class="el icon" style="left: 300px; top: 120px; width: 50px; height: 50px; border-radius: 25px;"></div>
+    
+    <!-- el_05_balance_card -->
+    <div class="el card" style="left: 20px; top: 200px; width: 335px; height: 150px; border-radius: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.8);"></div>
+    
+    <!-- el_06_report_card -->
+    <div class="el card" style="left: 20px; top: 550px; width: 335px; height: 220px; border-radius: 30px;"></div>
+</body>
+</html>
+<!--
+UX POLISH CHANGELOG
+==================
+[rule]       [element]    [property]: [before] → [after]
+color-primary N/A         added:      --color-primary: #007AFF
+cursor-ptr   el_01,04,05,06 cursor: default → pointer
+touch-target el_01,04,05,06 min-width/height: 0 → 44px
+hover-state  el_01,04,05,06 opacity: 1 → 0.85
+press-feedback el_01,04,05,06 transform: none → scale(0.97)
+focus-vis    all interactive outline: none → 2px solid var(--color-primary)
+animation-timing all      transition: none → opacity/transform 150ms/100ms
+-->

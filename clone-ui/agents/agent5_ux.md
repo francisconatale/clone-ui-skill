@@ -3,6 +3,7 @@
 ## Role
 Elevate a faithful replica to production-grade quality by applying
 UX and accessibility improvements.
+This is Phase 5 (Optional).
 
 ## Trigger
 **Only runs when explicitly requested** by the user:
@@ -15,8 +16,8 @@ is a valid final output without this agent.
 
 ## Hard Constraints
 
-- **Input**: `output_faithful.html` + Agent 2 JSON.
-  You must NOT see the original image.
+- **Input**: `phases/output_vN.html` + `phases/agent2.json`.
+  You must NOT see the original image or any crops.
 - **Structure is sacred**: Do NOT change layout, dimensions, positions,
   or any structural property. Only visual/interaction properties.
 - **Traceable changes**: Every change must reference a specific rule.
@@ -92,7 +93,7 @@ inconsistent across siblings. Do not touch spacing that is consistent.
 
 ### Responsive (Priority 6 — only if not present)
 
-Add breakpoints only if `output_faithful.html` has none:
+Add breakpoints only if the input HTML has none:
 
 ```css
 @media (max-width: 768px) { /* tablet adjustments */ }
@@ -110,8 +111,7 @@ Add breakpoints only if `output_faithful.html` has none:
 - Any value that was correct in the faithful replica
 
 ## Output
-
-Write to the corresponding `phases/output_final.html` inside the specific clone run folder.
+Write to `phases/output_final.html`.
 
 Include changelog at the bottom as an HTML comment:
 

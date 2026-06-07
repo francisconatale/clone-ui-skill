@@ -1,0 +1,19 @@
+{
+  "id": "el_01",
+  "absolute_position": { "x": 10, "y": 10, "width": 26, "height": 26 },
+  "crop_file": "el_01.png",
+  "type": "avatar",
+  "z_layer": 2,
+  "cropped": false,
+  "visuals": {
+    "background_color": null,
+    "border_radius": "50%",
+    "border": "1px solid #FFFFFF",
+    "shadow": null,
+    "opacity": 1
+  },
+  "text_blocks": [],
+  "children": [],
+  "layout_logic": null,
+  "spacing_samples": null
+}

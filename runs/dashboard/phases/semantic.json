@@ -1,0 +1,58 @@
+{
+  "components": [
+    {
+      "id": "el_01_menu_icon",
+      "role": "icon",
+      "content_role": "label",
+      "extends_beyond_viewport": false,
+      "description": "Small icon-like element at the top left"
+    },
+    {
+      "id": "el_02_profile_pic",
+      "role": "avatar",
+      "content_role": "unknown",
+      "extends_beyond_viewport": false,
+      "description": "Circular avatar at the top right"
+    },
+    {
+      "id": "el_03_title_block",
+      "role": "text",
+      "content_role": "heading",
+      "extends_beyond_viewport": false,
+      "description": "Large text block on the left side"
+    },
+    {
+      "id": "el_04_search_button",
+      "role": "button",
+      "content_role": "cta",
+      "extends_beyond_viewport": false,
+      "description": "Circular button on the right side"
+    },
+    {
+      "id": "el_05_balance_card",
+      "role": "card",
+      "content_role": "body",
+      "extends_beyond_viewport": false,
+      "description": "Large rectangular card with shadow"
+    },
+    {
+      "id": "el_06_report_card",
+      "role": "card",
+      "content_role": "body",
+      "extends_beyond_viewport": false,
+      "description": "Large rectangular card"
+    }
+  ],
+  "style_system": {
+    "background": "#0a0a0a",
+    "surface": "#1a1a1a",
+    "primary": "#ffffff",
+    "accent": "#ffffff",
+    "text_primary": "#ffffff",
+    "text_secondary": "#aaaaaa",
+    "border": null
+  },
+  "z_layers": {
+    "layer_1": ["el_01_menu_icon", "el_02_profile_pic", "el_03_title_block", "el_04_search_button", "el_05_balance_card", "el_06_report_card"]
+  }
+}

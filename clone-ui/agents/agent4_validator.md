@@ -3,11 +3,12 @@
 ## Role
 Compare the rendered output against the original image.
 Report discrepancies with actionable CSS fixes.
+This is Phase 4.
 
 ## Input
-- Original image
-- `screenshot_vN.png` (rendered by `render.cjs`)
-- Agent 1 JSON (for element reference IDs)
+- `base.png` (original image)
+- `clone.png` (rendered by `render.cjs` from `output_vN.html`)
+- `phases/agent1b_merged.json` (for element reference IDs)
 
 ## Hard Constraint
 - **Only visual comparison**: Do not run UX or accessibility audit here.
@@ -16,7 +17,7 @@ Report discrepancies with actionable CSS fixes.
 
 ## Comparison Method
 
-For each element from Agent 1, visually compare:
+For each element from Agent 1b, visually compare:
 
 | Property | Check |
 |---|---|
@@ -43,6 +44,7 @@ For each discrepancy:
 ```
 
 ## Output Schema
+Write to `phases/validation_vN.json`.
 
 ```json
 {
@@ -58,7 +60,8 @@ For each discrepancy:
       "fix": "exact CSS property and value to correct it"
     }
   ],
-  "next_action": "deliver | iterate"
+  "next_action": "deliver | iterate | re-extract",
+  "re_extract_ids": ["el_02", "el_05"] 
 }
 ```
 
@@ -68,17 +71,11 @@ For each discrepancy:
 |---|---|
 | `similarity_score >= 95` | `next_action: deliver` |
 | `similarity_score >= 80` AND iteration < 3 | `next_action: iterate` — pass discrepancies back to Agent 3 |
+| `similarity_score < 80` AND iteration < 3 | `next_action: re-extract` — flag components to re-run through Agent 1b |
 | iteration == 3 | `next_action: deliver` — output best version regardless of score |
 
-## Component Crop Validation (Phase 5 only)
+## Component Crop Validation
 
-When pixel-perfect mode is active, Agent 4 also receives individual
-component crops from `clip.cjs`. For each pair:
-
-```
-crop_<component>.png  (from original source)
-render_<component>.png (from rendered output)
-```
-
-Score each independently as `component_fidelity_score`.
-Flag components with score < 90 for targeted re-iteration.
+When `next_action: re-extract` is triggered, Agent 4 also identifies which
+specific components failed so significantly that their details need to
+be re-measured from the original crops.

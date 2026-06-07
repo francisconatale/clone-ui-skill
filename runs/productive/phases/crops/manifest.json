@@ -1,0 +1,354 @@
+[
+  {
+    "id": "el_01",
+    "file": "runs\\productive\\phases\\crops\\el_01.png",
+    "region": {
+      "left": 2,
+      "top": 2,
+      "width": 42,
+      "height": 42
+    },
+    "original_bb": {
+      "x": 10,
+      "y": 10,
+      "width": 26,
+      "height": 26
+    }
+  },
+  {
+    "id": "el_02",
+    "file": "runs\\productive\\phases\\crops\\el_02.png",
+    "region": {
+      "left": 67,
+      "top": 2,
+      "width": 98,
+      "height": 40
+    },
+    "original_bb": {
+      "x": 75,
+      "y": 10,
+      "width": 82,
+      "height": 24
+    }
+  },
+  {
+    "id": "el_03",
+    "file": "runs\\productive\\phases\\crops\\el_03.png",
+    "region": {
+      "left": 188,
+      "top": 2,
+      "width": 42,
+      "height": 42
+    },
+    "original_bb": {
+      "x": 196,
+      "y": 10,
+      "width": 26,
+      "height": 26
+    }
+  },
+  {
+    "id": "el_04",
+    "file": "runs\\productive\\phases\\crops\\el_04.png",
+    "region": {
+      "left": 2,
+      "top": 37,
+      "width": 228,
+      "height": 131
+    },
+    "original_bb": {
+      "x": 10,
+      "y": 45,
+      "width": 212,
+      "height": 115
+    }
+  },
+  {
+    "id": "el_04_c01",
+    "file": "runs\\productive\\phases\\crops\\el_04_c01.png",
+    "region": {
+      "left": 17,
+      "top": 52,
+      "width": 126,
+      "height": 56
+    },
+    "original_bb": {
+      "x": 25,
+      "y": 60,
+      "width": 110,
+      "height": 40
+    }
+  },
+  {
+    "id": "el_04_c02",
+    "file": "runs\\productive\\phases\\crops\\el_04_c02.png",
+    "region": {
+      "left": 17,
+      "top": 97,
+      "width": 126,
+      "height": 28
+    },
+    "original_bb": {
+      "x": 25,
+      "y": 105,
+      "width": 110,
+      "height": 12
+    }
+  },
+  {
+    "id": "el_04_c03",
+    "file": "runs\\productive\\phases\\crops\\el_04_c03.png",
+    "region": {
+      "left": 17,
+      "top": 117,
+      "width": 81,
+      "height": 38
+    },
+    "original_bb": {
+      "x": 25,
+      "y": 125,
+      "width": 65,
+      "height": 22
+    }
+  },
+  {
+    "id": "el_04_c04",
+    "file": "runs\\productive\\phases\\crops\\el_04_c04.png",
+    "region": {
+      "left": 137,
+      "top": 47,
+      "width": 86,
+      "height": 111
+    },
+    "original_bb": {
+      "x": 145,
+      "y": 55,
+      "width": 70,
+      "height": 95
+    }
+  },
+  {
+    "id": "el_05",
+    "file": "runs\\productive\\phases\\crops\\el_05.png",
+    "region": {
+      "left": 2,
+      "top": 157,
+      "width": 228,
+      "height": 61
+    },
+    "original_bb": {
+      "x": 10,
+      "y": 165,
+      "width": 212,
+      "height": 45
+    }
+  },
+  {
+    "id": "el_05_c01",
+    "file": "runs\\productive\\phases\\crops\\el_05_c01.png",
+    "region": {
+      "left": 90,
+      "top": 157,
+      "width": 44,
+      "height": 61
+    },
+    "original_bb": {
+      "x": 98,
+      "y": 165,
+      "width": 28,
+      "height": 45
+    }
+  },
+  {
+    "id": "el_06",
+    "file": "runs\\productive\\phases\\crops\\el_06.png",
+    "region": {
+      "left": 2,
+      "top": 212,
+      "width": 136,
+      "height": 38
+    },
+    "original_bb": {
+      "x": 10,
+      "y": 220,
+      "width": 120,
+      "height": 22
+    }
+  },
+  {
+    "id": "el_07",
+    "file": "runs\\productive\\phases\\crops\\el_07.png",
+    "region": {
+      "left": 2,
+      "top": 242,
+      "width": 117,
+      "height": 156
+    },
+    "original_bb": {
+      "x": 10,
+      "y": 250,
+      "width": 101,
+      "height": 140
+    }
+  },
+  {
+    "id": "el_07_c01",
+    "file": "runs\\productive\\phases\\crops\\el_07_c01.png",
+    "region": {
+      "left": 12,
+      "top": 252,
+      "width": 56,
+      "height": 31
+    },
+    "original_bb": {
+      "x": 20,
+      "y": 260,
+      "width": 40,
+      "height": 15
+    }
+  },
+  {
+    "id": "el_07_c02",
+    "file": "runs\\productive\\phases\\crops\\el_07_c02.png",
+    "region": {
+      "left": 12,
+      "top": 287,
+      "width": 97,
+      "height": 46
+    },
+    "original_bb": {
+      "x": 20,
+      "y": 295,
+      "width": 81,
+      "height": 30
+    }
+  },
+  {
+    "id": "el_07_c03",
+    "file": "runs\\productive\\phases\\crops\\el_07_c03.png",
+    "region": {
+      "left": 12,
+      "top": 347,
+      "width": 41,
+      "height": 41
+    },
+    "original_bb": {
+      "x": 20,
+      "y": 355,
+      "width": 25,
+      "height": 25
+    }
+  },
+  {
+    "id": "el_08",
+    "file": "runs\\productive\\phases\\crops\\el_08.png",
+    "region": {
+      "left": 113,
+      "top": 242,
+      "width": 117,
+      "height": 156
+    },
+    "original_bb": {
+      "x": 121,
+      "y": 250,
+      "width": 101,
+      "height": 140
+    }
+  },
+  {
+    "id": "el_08_c01",
+    "file": "runs\\productive\\phases\\crops\\el_08_c01.png",
+    "region": {
+      "left": 123,
+      "top": 252,
+      "width": 46,
+      "height": 31
+    },
+    "original_bb": {
+      "x": 131,
+      "y": 260,
+      "width": 30,
+      "height": 15
+    }
+  },
+  {
+    "id": "el_08_c02",
+    "file": "runs\\productive\\phases\\crops\\el_08_c02.png",
+    "region": {
+      "left": 123,
+      "top": 287,
+      "width": 97,
+      "height": 46
+    },
+    "original_bb": {
+      "x": 131,
+      "y": 295,
+      "width": 81,
+      "height": 30
+    }
+  },
+  {
+    "id": "el_08_c03",
+    "file": "runs\\productive\\phases\\crops\\el_08_c03.png",
+    "region": {
+      "left": 123,
+      "top": 347,
+      "width": 41,
+      "height": 41
+    },
+    "original_bb": {
+      "x": 131,
+      "y": 355,
+      "width": 25,
+      "height": 25
+    }
+  },
+  {
+    "id": "el_09",
+    "file": "runs\\productive\\phases\\crops\\el_09.png",
+    "region": {
+      "left": 2,
+      "top": 397,
+      "width": 136,
+      "height": 38
+    },
+    "original_bb": {
+      "x": 10,
+      "y": 405,
+      "width": 120,
+      "height": 22
+    }
+  },
+  {
+    "id": "el_10",
+    "file": "runs\\productive\\phases\\crops\\el_10.png",
+    "region": {
+      "left": 2,
+      "top": 424,
+      "width": 228,
+      "height": 20
+    },
+    "original_bb": {
+      "x": 10,
+      "y": 432,
+      "width": 212,
+      "height": 12
+    }
+  },
+  {
+    "id": "el_10_c01",
+    "file": "runs\\productive\\phases\\crops\\el_10_c01.png",
+    "region": {
+      "left": 10,
+      "top": 426,
+      "width": 26,
+      "height": 18
+    },
+    "original_bb": {
+      "x": 18,
+      "y": 434,
+      "width": 10,
+      "height": 10
+    }
+  }
+]

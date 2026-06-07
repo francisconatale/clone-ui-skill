@@ -1,0 +1,23 @@
+{
+  "id": "el_04",
+  "absolute_position": { "x": 10, "y": 45, "width": 212, "height": 115 },
+  "crop_file": "el_04.png",
+  "type": "container",
+  "z_layer": 1,
+  "cropped": false,
+  "visuals": {
+    "background_color": "#D1E8E2",
+    "border_radius": 24,
+    "border": null,
+    "shadow": null
+  },
+  "text_blocks": [],
+  "children": [
+    { "id": "el_04_c01", "type": "text_block" },
+    { "id": "el_04_c02", "type": "text_block" },
+    { "id": "el_04_c03", "type": "avatar_group" },
+    { "id": "el_04_c04", "type": "illustration" }
+  ],
+  "layout_logic": "absolute_with_padding",
+  "spacing_samples": { "padding": 15 }
+}

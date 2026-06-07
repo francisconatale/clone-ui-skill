@@ -1,0 +1,170 @@
+{
+  "components": [
+    {
+      "id": "el_01",
+      "role": "avatar",
+      "content_role": "unknown",
+      "extends_beyond_viewport": false,
+      "description": "Small circular element at the top-left corner with a white border."
+    },
+    {
+      "id": "el_02",
+      "role": "text",
+      "content_role": "heading",
+      "extends_beyond_viewport": false,
+      "description": "Vertically stacked text pair at the top center, bold heading above subtext."
+    },
+    {
+      "id": "el_03",
+      "role": "button",
+      "content_role": "cta",
+      "extends_beyond_viewport": false,
+      "description": "Circular white button at the top-right corner containing a magnifying glass icon."
+    },
+    {
+      "id": "el_04",
+      "role": "card",
+      "content_role": "unknown",
+      "extends_beyond_viewport": false,
+      "description": "Large mint-colored rounded rectangle serving as a primary container."
+    },
+    {
+      "id": "el_04_c01",
+      "role": "text",
+      "content_role": "heading",
+      "extends_beyond_viewport": false,
+      "description": "Large bold headline positioned in the upper half of the mint card."
+    },
+    {
+      "id": "el_04_c02",
+      "role": "text",
+      "content_role": "caption",
+      "extends_beyond_viewport": false,
+      "description": "Medium-weight caption text positioned below the headline in the mint card."
+    },
+    {
+      "id": "el_04_c03",
+      "role": "badge",
+      "content_role": "unknown",
+      "extends_beyond_viewport": false,
+      "description": "Horizontal group of overlapping circular elements with a numerical counter."
+    },
+    {
+      "id": "el_04_c04",
+      "role": "unknown",
+      "extends_beyond_viewport": false,
+      "description": "Multi-colored floral visual asset on the right side of the mint card."
+    },
+    {
+      "id": "el_05",
+      "role": "unknown",
+      "content_role": "unknown",
+      "extends_beyond_viewport": false,
+      "description": "Horizontal scrolling container for sequential selection items."
+    },
+    {
+      "id": "el_05_c01",
+      "role": "badge",
+      "content_role": "date",
+      "extends_beyond_viewport": false,
+      "description": "Dark capsule containing vertically stacked white date text and a dot indicator."
+    },
+    {
+      "id": "el_06",
+      "role": "text",
+      "content_role": "heading",
+      "extends_beyond_viewport": false,
+      "description": "Bold section heading text aligned to the left margin."
+    },
+    {
+      "id": "el_07",
+      "role": "card",
+      "content_role": "unknown",
+      "extends_beyond_viewport": false,
+      "description": "Beige vertical card with high corner radius and internal vertical layout."
+    },
+    {
+      "id": "el_07_c01",
+      "role": "badge",
+      "content_role": "label",
+      "extends_beyond_viewport": false,
+      "description": "Small white label with centered dark text at the top of the beige card."
+    },
+    {
+      "id": "el_07_c02",
+      "role": "text",
+      "content_role": "subheading",
+      "extends_beyond_viewport": false,
+      "description": "Centered bold title and secondary subtitle pair in the beige card."
+    },
+    {
+      "id": "el_07_c03",
+      "role": "avatar",
+      "content_role": "unknown",
+      "extends_beyond_viewport": false,
+      "description": "Circular avatar with adjacent name and role text at the bottom of the beige card."
+    },
+    {
+      "id": "el_08",
+      "role": "card",
+      "content_role": "unknown",
+      "extends_beyond_viewport": false,
+      "description": "Salmon vertical card with high corner radius and internal vertical layout."
+    },
+    {
+      "id": "el_08_c01",
+      "role": "badge",
+      "content_role": "label",
+      "extends_beyond_viewport": false,
+      "description": "Small white label with centered salmon text at the top of the salmon card."
+    },
+    {
+      "id": "el_08_c02",
+      "role": "text",
+      "content_role": "subheading",
+      "extends_beyond_viewport": false,
+      "description": "Centered bold title and secondary subtitle pair in the salmon card."
+    },
+    {
+      "id": "el_08_c03",
+      "role": "avatar",
+      "content_role": "unknown",
+      "extends_beyond_viewport": false,
+      "description": "Circular avatar with adjacent name and role text at the bottom of the salmon card."
+    },
+    {
+      "id": "el_09",
+      "role": "text",
+      "content_role": "heading",
+      "extends_beyond_viewport": false,
+      "description": "Bold section heading text positioned below the vertical cards."
+    },
+    {
+      "id": "el_10",
+      "role": "card",
+      "content_role": "unknown",
+      "extends_beyond_viewport": true,
+      "description": "Pink rounded rectangle at the bottom of the viewport containing an icon and message."
+    },
+    {
+      "id": "el_10_c01",
+      "role": "icon",
+      "content_role": "unknown",
+      "extends_beyond_viewport": false,
+      "description": "Small sparkle icon within the pink footer container."
+    }
+  ],
+  "style_system": {
+    "background": "#FFFFFF",
+    "surface": "#FFFFFF",
+    "primary": "#1A3C34",
+    "accent": "#D1E8E2",
+    "text_primary": "#000000",
+    "text_secondary": "#808080",
+    "border": "#E0E0E0"
+  },
+  "z_layers": {
+    "layer_1": ["el_02", "el_04", "el_05", "el_06", "el_07", "el_08", "el_09", "el_10"],
+    "layer_2": ["el_01", "el_03", "el_04_c01", "el_04_c02", "el_04_c03", "el_04_c04", "el_05_c01", "el_07_c01", "el_07_c02", "el_07_c03", "el_08_c01", "el_08_c02", "el_08_c03", "el_10_c01"]
+  }
+}

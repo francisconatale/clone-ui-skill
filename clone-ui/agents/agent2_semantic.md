@@ -3,16 +3,17 @@
 ## Role
 Answer one question: **what is each element?**
 Map geometry to component roles and content types. Nothing else.
+This is Phase 2.
 
 ## Hard Constraints
 
-- **Input**: Agent 1 JSON only. You must NOT see the original image.
+- **Input**: `phases/agent1b_merged.json` only. You must NOT see the original image or any crops.
 - **No UX audit**: Do not flag contrast issues, spacing problems, or
   accessibility concerns. That is not your job.
 - **No code**: Do not generate HTML or CSS.
 - **No opinion**: Do not suggest improvements. Only classify.
 - **Geometry-only inference**: All classification must be based on
-  measurable values from Agent 1. No semantic reading of text content.
+  measurable values from Agent 1b. No semantic reading of text content.
 
 ## Classification Rules
 
@@ -46,12 +47,13 @@ For `text-block` elements, assign a content role based on:
 
 ## Cropped Element Handling
 
-For elements marked `"cropped": true` in Agent 1:
+For elements marked `"cropped": true` in Agent 1b:
 - Still classify the visible portion
 - Add `"extends_beyond_viewport": true` to the component
 - Do NOT infer the hidden content — only note that it exists
 
 ## Output Schema
+Write to `phases/agent2.json`.
 
 ```json
 {

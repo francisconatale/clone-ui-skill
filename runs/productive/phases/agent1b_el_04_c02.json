@@ -1,0 +1,15 @@
+{
+  "id": "el_04_c02",
+  "absolute_position": { "x": 25, "y": 105, "width": 110, "height": 12 },
+  "crop_file": "el_04_c02.png",
+  "type": "text_block",
+  "z_layer": 2,
+  "cropped": false,
+  "visuals": null,
+  "text_blocks": [
+    { "type": "caption", "font_size": 12, "font_weight": "500", "color": "#1A3C34" }
+  ],
+  "children": [],
+  "layout_logic": null,
+  "spacing_samples": null
+}
