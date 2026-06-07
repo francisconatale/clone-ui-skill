@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Overview | Ethereal Edition</title>
+    <!-- Assets -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Palette: Warm Quartz & Lavender Mist */
+            --bg-gradient: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            --screen-bg: radial-gradient(circle at top left, #fff9f9 0%, #f4f7ff 50%, #f9f4ff 100%);
+            --primary: #5d5d81;
+            --text-main: #3d3d5c;
+            --text-muted: #8e8ea8;
+            
+            /* Glass System */
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-shadow: 0 15px 35px rgba(93, 93, 129, 0.08);
+            
+            /* Spacing & Radii */
+            --radius-lg: 40px;
+            --radius-md: 30px;
+            --radius-sm: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg-gradient);
+            font-family: 'Outfit', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Screen Wrapper (280x580 Refined Ratio) */
+        .screen {
+            position: relative;
+            width: 300px;
+            height: 620px;
+            background: var(--screen-bg);
+            border-radius: var(--radius-lg);
+            border: 10px solid #ffffff;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.1), inset 0 0 80px rgba(255,255,255,0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Animations */
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            animation: fadeInSlide 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        /* el_01 - Avatar */
+        .avatar-top {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            width: 36px;
+            height: 36px;
+            border-radius: 14px;
+            border: 2px solid #ffffff;
+            background: url('https://i.pravatar.cc/150?img=32') center/cover;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            z-index: 10;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .avatar-top:hover { transform: scale(1.05); }
+
+        /* el_02 - Header */
+        .header-center {
+            position: absolute;
+            left: 0; right: 0;
+            top: 20px;
+            text-align: center;
+            z-index: 5;
+        }
+        .header-center h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            margin: 0;
+            color: var(--text-main);
+            font-weight: 800;
+        }
+        .header-center span {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+        }
+
+        /* el_03 - Search */
+        .btn-search {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            width: 36px;
+            height: 36px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* el_04 - Hero Card */
+        .hero-card {
+            position: absolute;
+            left: 20px;
+            top: 75px;
+            width: 260px;
+            height: 160px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(20px);
+            border-radius: 35px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow: hidden;
+            z-index: 5;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            line-height: 1.1;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            z-index: 2;
+        }
+
+        .hero-sub {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            z-index: 2;
+        }
+
+        .avatar-group {
+            display: flex;
+            align-items: center;
+            z-index: 2;
+        }
+        .avatar-group img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            margin-left: -8px;
+        }
+        .avatar-group img:first-child { margin-left: 0; }
+        .avatar-group .count {
+            margin-left: 10px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* el_04_c04 - Background Blob */
+        .hero-blob {
+            position: absolute;
+            right: -30px;
+            top: -30px;
+            width: 160px;
+            height: 160px;
+            z-index: 1;
+            opacity: 0.5;
+            filter: blur(15px);
+            animation: rotateBlob 20s linear infinite;
+        }
+        @keyframes rotateBlob {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* el_05 - Date Scroller */
+        .date-scroller {
+            position: absolute;
+            left: 20px;
+            top: 245px;
+            width: 260px;
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding: 5px 0;
+            z-index: 5;
+        }
+        .date-scroller::-webkit-scrollbar { display: none; }
+
+        .date-item {
+            min-width: 42px;
+            height: 65px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .date-item span:first-child { font-size: 10px; color: var(--text-muted); margin-bottom: 4px; }
+        .date-item span:last-child { font-size: 14px; font-weight: 600; color: var(--text-main); }
+        
+        .date-item.active {
+            background: #1e1e2d;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .date-item.active span:first-child { color: rgba(255,255,255,0.6); }
+        .date-item.active span:last-child { color: #ffffff; }
+
+        /* el_06 - Section Title */
+        .section-title {
+            position: absolute;
+            left: 25px;
+            top: 325px;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--text-main);
+            margin: 0;
+            z-index: 5;
+        }
+
+        /* el_07/08 - Task Cards */
+        .task-grid {
+            position: absolute;
+            left: 20px;
+            top: 365px;
+            width: 260px;
+            display: flex;
+            gap: 15px;
+            z-index: 5;
+        }
+
+        .task-card {
+            flex: 1;
+            height: 160px;
+            border-radius: var(--radius-md);
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .task-card:hover { transform: translateY(-5px); }
+        
+        .task-card.blue { background: rgba(230, 240, 255, 0.5); }
+        .task-card.peach { background: rgba(255, 235, 235, 0.5); }
+
+        .badge {
+            width: fit-content;
+            padding: 4px 10px;
+            background: #ffffff;
+            border-radius: 10px;
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .task-info h3 { font-size: 15px; margin: 0 0 4px 0; color: var(--text-main); }
+        .task-info p { font-size: 11px; margin: 0; color: var(--text-muted); }
+
+        .task-footer {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .task-footer img { width: 22px; height: 22px; border-radius: 50%; border: 1px solid #fff; }
+        .task-footer span { font-size: 10px; font-weight: 500; color: var(--text-main); }
+
+        /* el_10 - Status Bar */
+        .status-bar {
+            position: absolute;
+            left: 20px;
+            bottom: 25px;
+            width: 260px;
+            height: 44px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 12px;
+            z-index: 10;
+        }
+        .status-bar i { color: #f59e0b; }
+        .status-bar span { font-size: 12px; font-weight: 500; color: var(--text-main); }
+
+    </style>
+</head>
+<body>
+    <div class="screen">
+        <!-- el_01 - User Avatar -->
+        <div class="avatar-top animate" style="animation-delay: 0.1s;"></div>
+
+        <!-- el_02 - Header -->
+        <div class="header-center animate" style="animation-delay: 0.2s;">
+            <h1>Daily</h1>
+            <span>Oct 15, 2026</span>
+        </div>
+
+        <!-- el_03 - Search Button -->
+        <div class="btn-search animate" style="animation-delay: 0.1s;">
+            <i data-lucide="search" size="18" stroke-width="2.5"></i>
+        </div>
+
+        <!-- el_04 - Main Card -->
+        <div class="hero-card animate" style="animation-delay: 0.3s;">
+            <div class="hero-blob">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#D1E8E2" d="M44.7,-76.4C58.3,-69.2,70.1,-58.3,78.9,-45.1C87.7,-31.9,93.5,-16,92.1,-0.8C90.7,14.3,82.1,28.6,72.4,41.2C62.7,53.8,51.8,64.7,39,72.1C26.2,79.5,13.1,83.4,-1.1,85.2C-15.3,87,-30.5,86.8,-44.4,80.8C-58.3,74.8,-70.8,63,-78.9,49.1C-87,35.2,-90.7,19.1,-89.6,3.6C-88.5,-11.9,-82.7,-26.8,-73.9,-39.8C-65.1,-52.8,-53.3,-63.9,-40.1,-71.4C-26.9,-78.9,-13.4,-82.8,0.7,-84.1C14.8,-85.4,29.7,-84.1,44.7,-76.4Z" transform="translate(100 100)" />
+                </svg>
+            </div>
+            <div class="hero-title">Dream <br>and achieve.</div>
+            <div class="hero-sub">4 focused tasks today</div>
+            <div class="avatar-group">
+                <img src="https://i.pravatar.cc/100?img=1" alt="user">
+                <img src="https://i.pravatar.cc/100?img=2" alt="user">
+                <img src="https://i.pravatar.cc/100?img=3" alt="user">
+                <div class="count">+3 members</div>
+            </div>
+        </div>
+
+        <!-- el_05 - Date Scroller -->
+        <div class="date-scroller animate" style="animation-delay: 0.4s;">
+            <div class="date-item"><span>S</span><span>12</span></div>
+            <div class="date-item"><span>M</span><span>13</span></div>
+            <div class="date-item"><span>T</span><span>14</span></div>
+            <div class="date-item active"><span>W</span><span>15</span></div>
+            <div class="date-item"><span>T</span><span>16</span></div>
+            <div class="date-item"><span>F</span><span>17</span></div>
+            <div class="date-item"><span>S</span><span>18</span></div>
+        </div>
+
+        <!-- el_06 - Section Title -->
+        <h2 class="section-title animate" style="animation-delay: 0.5s;">Upcoming</h2>
+
+        <!-- el_07/08 - Task Cards -->
+        <div class="task-grid">
+            <div class="task-card blue animate" style="animation-delay: 0.6s;">
+                <div class="badge">Art</div>
+                <div class="task-info">
+                    <h3>Design Flow</h3>
+                    <p>2h remaining</p>
+                </div>
+                <div class="task-footer">
+                    <img src="https://i.pravatar.cc/100?img=12" alt="Aura">
+                    <span>Aura M.</span>
+                </div>
+            </div>
+            <div class="task-card peach animate" style="animation-delay: 0.7s;">
+                <div class="badge">Zen</div>
+                <div class="task-info">
+                    <h3>Soft Yoga</h3>
+                    <p>At sunset</p>
+                </div>
+                <div class="task-footer">
+                    <img src="https://i.pravatar.cc/100?img=44" alt="Self">
+                    <span>Self</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- el_10 - Status Bar -->
+        <div class="status-bar animate" style="animation-delay: 0.8s;">
+            <i data-lucide="sparkles" size="16"></i>
+            <span>Flow with the day...</span>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        // Interaction: Date selection
+        document.querySelectorAll('.date-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelector('.date-item.active').classList.remove('active');
+                item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
